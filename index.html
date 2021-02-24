@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raid Logs</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	$.getJSON("data.json", function(data){
+		$.each(data, function(index) {
+			$("#result").append('<div class="row p-4">' + 
+								'<div class="col">' +
+								'<div class="card">' +
+								'<h5 class="card-header">' + data[index].user_tag + '</h5>' +
+								'<div class="card-body">' +
+								'<p class="card-text">' + data[index].message_content + '</p>' +
+								'<p class="card-text text-muted">' + data[index].time + '</p>' + 
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'</div>');
+		});
+	}).fail(function(){
+			$("#result").append('<div class="row p-4">' + 
+								'<div class="col">' +
+								'<div class="alert alert-danger" role="alert">' +
+								'Error retrieving log!' +
+								'</div>' +
+								'</div>' +
+								'</div>');
+	});
+});
+</script>
+</head> 
+<body>
+<div id="result" class="container">
+</div>
+</body>
+</html>
