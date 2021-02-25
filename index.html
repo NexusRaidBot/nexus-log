@@ -9,10 +9,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script>
 $(document).ready(function(){
-	const queryString = window.location.search;
-	const urlParams = new URLSearchParams(queryString);
-	const id = urlParams.get('id')
-	$.getJSON(id + ".json", function(data){
+	const urlParams = new URLSearchParams(window.location.search);
+	$.getJSON("http://api.nexusraidbot.com/" + urlParams.get('route') + "/" + urlParams.get('id'), function(data){
 		$.each(data, function(index) {
 			$("#result").append('<div class="row p-4">' + 
 								'<div class="col">' +
