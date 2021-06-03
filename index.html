@@ -16,11 +16,15 @@ $(document).ready(function(){
 			return new Date(a.time).getTime() - new Date(b.time).getTime();
 			}), function(index) {
 			var timestamp = moment.utc(data[index].time);
+			var user_icon;
+			if (data[index].user_icon){
+			  var user_icon = '<img src="' + data[index].user_icon + '" width="25" height="25" style="border-radius: 50%;"> ';
+			}
 			$("#result").append(
 				'<div class="row p-1">' + 
 				'<div class="col">' +
 				'<div class="card">' +
-				'<h6 class="card-header">' + data[index].user_tag + '</h6>' +
+				'<h6 class="card-header">' + user_icon + data[index].user_tag + '</h6>' +
 				'<div class="pt-1 pb-1 card-body">' +
 				'<p class="m-1 card-text">' + data[index].message_content + '</p>' +
 				'<p class="m-1 card-text text-muted">' + timestamp.tz(moment.tz.guess()).format('dddd, MMMM Do YYYY, h:mm a') + '</p>' + 
