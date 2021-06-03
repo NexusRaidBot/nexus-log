@@ -16,7 +16,7 @@ $(document).ready(function(){
 			return new Date(a.time).getTime() - new Date(b.time).getTime();
 			}), function(index) {
 			var timestamp = moment.utc(data[index].time);
-			var user_icon;
+			var user_icon = "";
 			if (data[index].user_icon){
 			  var user_icon = '<img src="' + data[index].user_icon + '" width="25" height="25" style="border-radius: 50%;"> ';
 			}
